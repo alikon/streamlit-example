@@ -31,6 +31,8 @@ for key, val in versions.items():
     st.write(val)
     valueVersion.append(val)
 
+st.write(columnVersion)
+ 
 chart_data = pd.DataFrame(
     valueVersion,
     columns=columnVersion)
