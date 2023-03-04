@@ -23,4 +23,6 @@ st.json(json['data']['cms_version'])
 versions = json['data']['cms_version']
 for version in versions:
     st.write(version)
-    st.write(version.value)
+    for key, val in version.items():
+        st.write(key)
+        st.write(val)
