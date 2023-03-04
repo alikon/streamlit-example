@@ -19,3 +19,7 @@ st.write(response)
 json = response.json() # This method is convenient when the API returns JSON
 st.write(json)
 st.json(json['data']['cms_version'])
+
+versions = json['data']['cms_version']
+for version in versions:
+    st.write(version)
