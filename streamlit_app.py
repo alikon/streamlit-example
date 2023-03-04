@@ -41,6 +41,6 @@ chart_data = pd.DataFrame(
 st.line_chart(chart_data)
 
 data = [['3.10',12.1],['4.0',2.3],['4.1',13]]
-df = pd.DataFrame(data,columns=['Version','%'],dtype=float)
+df = pd.DataFrame(data,dtype=float)
 
 st.line_chart(df)
