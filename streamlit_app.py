@@ -23,7 +23,7 @@ st.json(json['data']['cms_version'])
 versions = json['data']['cms_version']
 for version in versions:
     st.write(version)
-columnVersion = []
+columnVersion = np.array
 valueVersion = []
 for key, val in versions.items():
     st.write(key)
@@ -35,6 +35,6 @@ st.write(columnVersion)
  
 chart_data = pd.DataFrame(
     valueVersion,
-    columns=columnVersion)
+    columns=np.array(columnVersion))
 
 st.line_chart(chart_data)
