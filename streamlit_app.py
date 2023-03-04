@@ -23,7 +23,7 @@ st.json(json['data']['cms_version'])
 versions = json['data']['cms_version']
 for version in versions:
     st.write(version)
-columnVersion = np.array
+columnVersion = []
 valueVersion = []
 for key, val in versions.items():
     st.write(key)
