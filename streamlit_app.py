@@ -34,7 +34,8 @@ for key, val in versions.items():
 st.write(columnVersion)
  
 chart_data = pd.DataFrame(
-    valueVersion,
-    columns=np.array(columnVersion))
+    valueVersion
+    )
+chart_data.columns=np.array(columnVersion)
 
 st.line_chart(chart_data)
