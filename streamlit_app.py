@@ -2,7 +2,7 @@ import requests
 import streamlit as st
 
 # data = requests.get("'https://jsonplaceholder.typicode.com/todos/1'").json()
-response = requests.get("http://api.open-notify.org/astros.json")
+response = requests.get("https://developer.joomla.org/stats")
 st.write(response)
 # raw = response.content() # Return the raw bytes of the data payload
 # st.write(raw)
