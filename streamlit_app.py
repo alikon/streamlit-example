@@ -18,4 +18,4 @@ st.write(response)
 
 json = response.json() # This method is convenient when the API returns JSON
 st.write(json)
-st.write(json.data)
+st.json(json.data)
