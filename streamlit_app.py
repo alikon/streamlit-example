@@ -36,6 +36,6 @@ st.write(columnVersion)
 chart_data = pd.DataFrame(
     valueVersion
     )
-chart_data.columns=np.array(columnVersion)
+chart_data.columns=columnVersion
 
 st.line_chart(chart_data)
