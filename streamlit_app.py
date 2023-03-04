@@ -39,3 +39,8 @@ chart_data = pd.DataFrame(
 # chart_data.columns=np.array(columnVersion)
 
 st.line_chart(chart_data)
+
+data = [['3.10',12.1],['4.0',2.3],['4.1',13]]
+df = pd.DataFrame(data,columns=['Version','%'],dtype=float)
+
+st.line_chart(df)
