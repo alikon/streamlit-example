@@ -20,13 +20,15 @@ def loadData(api) :
         response.raise_for_status()
         return response
     except requests.exceptions.HTTPError as errh:
-        print(errh)
+        st.write(errh)
     except requests.exceptions.ConnectionError as errc:
-        print(errc)
+        st.write(errc)
     except requests.exceptions.Timeout as errt:
-        print(errt)
+        st.write(errt)
     except requests.exceptions.RequestException as err:
-        print(err)
+        st.write(err)
+    finally:
+        return response
 
 st.title("Joomla Streamlit App")
 
@@ -55,6 +57,9 @@ with st.sidebar:
 
 api = apiendpoint(option)
 data = loadData(api)
+if (data.status_code != 200):
+    st.warning('Unable to load data.')
+    st.stop()
 
 json = data.json() # This method is convenient when the API returns JSON
 
