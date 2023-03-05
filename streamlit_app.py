@@ -9,9 +9,9 @@ import time
 st.title("Joomla Streamlit App")
 
 with st.sidebar:
-    with st.echo():
-        st.write("Settings.")
-
+    ## with st.echo():
+    ##    st.write("Settings.")
+    st.write("Settings.")
     with st.spinner("Loading..."):
         time.sleep(5)
     st.success("Done!")
