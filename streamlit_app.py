@@ -16,14 +16,7 @@ def apiendpoint(option) :
 @st.cache
 def loadData(api) :
     response = requests.get("https://developer.joomla.org/stats/" + api)
-    json = response.json() # This method is convenient when the API returns JSON
-    if st.session_state.visibility == "visible" :
-        st.write(response)
-        st.write(json)
-    # st.json(json['data']['cms_version'])
-
-    # versions = json['data']['cms_version']
-    return json['data'][api]
+    return response
 
 st.title("Joomla Streamlit App")
 
@@ -53,8 +46,11 @@ with st.sidebar:
     )
 
 api = apiendpoint(option)
-versions = loadData(api)
+data = loadData(api)
 
+json = data.json() # This method is convenient when the API returns JSON
+
+versions = json['data'][api]
 columnVersion = []
 valueVersion  = []
 
@@ -76,3 +72,9 @@ v = alt.Chart(joomla).mark_bar().encode(
 )
 
 st.altair_chart(v, use_container_width=True)
+
+if st.session_state.visibility == "visible" :
+    st.write(data)
+    st.write(json)
+    # st.json(json['data']['cms_version'])
+    # versions = json['data']['cms_version']
