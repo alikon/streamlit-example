@@ -59,7 +59,7 @@ joomla = pd.DataFrame({
     'perc': [valueVersion]
 })
 
-v = alt.Chart(source).mark_bar().encode(
+v = alt.Chart(joomla).mark_bar().encode(
     x='version',
     y='perc'
 )
