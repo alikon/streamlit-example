@@ -16,7 +16,7 @@ def apiendpoint(option) :
 @st.cache(suppress_st_warning=True)
 def loadData(api, days = 1) :
     try:
-        response = requests.get("https://developer.joomla.org/stats/" + api + "?timeframe=" + days.str())
+        response = requests.get("https://developer.joomla.org/stats/" + api + "?timeframe=" + str(days))
         response.raise_for_status()
         return response
     except requests.exceptions.HTTPError as errh:
