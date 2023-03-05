@@ -13,6 +13,7 @@ def apiendpoint(option) :
     elif option == 'Database':
         return 'db_version'
 
+@st.cache
 def loadData(api) :
     response = requests.get("https://developer.joomla.org/stats/" + api)
     json = response.json() # This method is convenient when the API returns JSON
@@ -46,7 +47,7 @@ with st.sidebar:
     
     st.radio(
         "Set label visibility 👇",
-        ["visible", "hidden", "collapsed"],
+        ["visible", "hidden"],
         key="visibility",
         label_visibility=st.session_state.visibility,
     )
