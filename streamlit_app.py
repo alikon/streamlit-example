@@ -15,6 +15,8 @@ with st.sidebar:
     with st.spinner("Loading..."):
         time.sleep(5)
     st.success("Done!")
+    perc = st.slider('How old are you?', 0, 100, 5)
+    st.write("selected ", perc, 'years old')
 
 response = requests.get("https://developer.joomla.org/stats/cms_version")
 st.write(response)
