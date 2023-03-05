@@ -5,6 +5,24 @@ import numpy as np
 import pandas as pd
 import time
 
+def apiendpoint(option) :
+    if option == 'CMS':
+        return 'cms_version'
+    elif option == 'PHP':
+        return 'php_version'
+    elif option == 'Database':
+        return 'db_version'
+
+def loadData(api) :
+    response = requests.get("https://developer.joomla.org/stats/" + api)
+    st.write(response)
+
+    json = response.json() # This method is convenient when the API returns JSON
+    st.write(json)
+    # st.json(json['data']['cms_version'])
+
+    # versions = json['data']['cms_version']
+    return json['data'][api]
 
 st.title("Joomla Streamlit App")
 
@@ -12,26 +30,23 @@ with st.sidebar:
     ## with st.echo():
     ##    st.write("Settings.")
     st.write("Settings.")
+    option = st.selectbox(
+    'What data ?',
+    ('CMS', 'PHP', 'Database'))
+
+    st.write('You selected:', option)
+    perc = st.slider('Filter on %', 0, 100, 5)
+    st.write("selected ", perc, '%')
     #with st.spinner("Loading..."):
     #    time.sleep(5)
     #st.success("Done!")
-    perc = st.slider('How old are you?', 0, 100, 5)
-    st.write("selected ", perc, '%')
 
-response = requests.get("https://developer.joomla.org/stats/cms_version")
-st.write(response)
-
-json = response.json() # This method is convenient when the API returns JSON
-st.write(json)
-# st.json(json['data']['cms_version'])
-
-versions = json['data']['cms_version']
-
-##for version in versions:
-##    st.write(version)
+api = apiendpoint(option)
+version = loadData(api)
 
 columnVersion = []
-valueVersion = []
+valueVersion  = []
+
 for key, val in versions.items():
     # st.write(key)
     columnVersion.append(key)
