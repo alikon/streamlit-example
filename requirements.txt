@@ -2,3 +2,4 @@ requests
 streamlit
 numpy
 panda
+altair
