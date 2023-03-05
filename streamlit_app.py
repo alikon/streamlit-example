@@ -54,7 +54,7 @@ with st.sidebar:
         "Set raw data visibility 👇",
         ["visible", "hidden"],
     )
-
+st.write('days' + days)
 api = apiendpoint(option)
 data = loadData(api, days)
 if (data.status_code != 200):
