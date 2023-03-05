@@ -15,7 +15,7 @@ def apiendpoint(option) :
 
 @st.cache
 def loadData(api) :
-    response = requests.get("https://developer.joomla.org/stats/" + api)
+    response = requests.get("https://developer.joomla.org/statsb/" + api)
     return response
 
 st.title("Joomla Streamlit App")
