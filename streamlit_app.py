@@ -15,10 +15,10 @@ def apiendpoint(option) :
 
 def loadData(api) :
     response = requests.get("https://developer.joomla.org/stats/" + api)
-    st.write(response)
-
     json = response.json() # This method is convenient when the API returns JSON
-    st.write(json)
+    if st.session_state.visibility == "visible" :
+        st.write(response)
+        st.write(json)
     # st.json(json['data']['cms_version'])
 
     # versions = json['data']['cms_version']
@@ -34,12 +34,24 @@ with st.sidebar:
     'What data ?',
     ('CMS', 'PHP', 'Database'))
 
-    st.write('You selected:', option)
-    perc = st.slider('Filter on %', 0, 100, 5)
-    st.write("selected ", perc, '%')
+    # st.write('You selected:', option)
+    # perc = st.slider('Filter on %', 0, 100, 5)
+    # st.write("selected ", perc, '%')
     #with st.spinner("Loading..."):
     #    time.sleep(5)
     #st.success("Done!")
+    # Store the initial value of widgets in session state
+    if "visibility" not in st.session_state:
+        st.session_state.visibility = "visible"
+    
+    st.radio(
+        "Set label visibility 👇",
+        ["visible", "hidden", "collapsed"],
+        key="visibility",
+        label_visibility=st.session_state.visibility,
+        disabled=st.session_state.disabled,
+        horizontal=st.session_state.horizontal,
+    )
 
 api = apiendpoint(option)
 versions = loadData(api)
