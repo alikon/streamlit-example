@@ -61,7 +61,8 @@ joomla = pd.DataFrame({
 
 v = alt.Chart(joomla).mark_bar().encode(
     x='version',
-    y='perc'
+    y='perc',
+    color=alt.Color('x:N', scale=scale),
 )
 
 st.altair_chart(v, use_container_width=True)
