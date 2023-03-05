@@ -5,13 +5,22 @@ import numpy as np
 import pandas as pd
 
 
-st.title("Simple Streamlit App")
+st.title("Joomla Streamlit App")
 
-st.write("Here's our first attempt at using data to create a table:")
+with st.sidebar:
+    with st.echo():
+        st.write("This code will be printed to the sidebar.")
+
+    with st.spinner("Loading..."):
+        time.sleep(5)
+    st.success("Done!")
+
+# st.write("Here's our first attempt at using data to create a table:")
+"""
 st.write(
     pd.DataFrame({"first column": [1, 2, 3, 4]})
 )
-
+"""
 # data = requests.get("'https://jsonplaceholder.typicode.com/todos/1'").json()
 response = requests.get("https://developer.joomla.org/stats/cms_version")
 st.write(response)
@@ -26,13 +35,13 @@ for version in versions:
 columnVersion = []
 valueVersion = []
 for key, val in versions.items():
-    st.write(key)
+    # st.write(key)
     columnVersion.append(key)
-    st.write(val)
+    # st.write(val)
     valueVersion.append(val)
 
-st.write(columnVersion)
- 
+# st.write(columnVersion)
+""" 
 chart_data = pd.DataFrame(
     valueVersion
     )
@@ -52,7 +61,7 @@ c = alt.Chart(source).mark_bar().encode(
 )
 
 st.altair_chart(c, use_container_width=True)
-
+"""
 #-----
 joomla = pd.DataFrame({
     'version': columnVersion,
