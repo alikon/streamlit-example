@@ -42,7 +42,7 @@ with st.sidebar:
     #st.success("Done!")
 
 api = apiendpoint(option)
-version = loadData(api)
+versions = loadData(api)
 
 columnVersion = []
 valueVersion  = []
