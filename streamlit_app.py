@@ -37,9 +37,9 @@ with st.sidebar:
     # Store the initial value of widgets in session state
     if "visibility" not in st.session_state:
         st.session_state.visibility = "visible"
-    
+    st.write("Set label visibility 👇")
     st.radio(
-        "Set label visibility 👇",
+        "",
         ["visible", "hidden"],
         key="visibility",
         label_visibility=st.session_state.visibility,
