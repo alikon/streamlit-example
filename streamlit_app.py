@@ -16,7 +16,7 @@ def apiendpoint(option) :
 @st.cache(suppress_st_warning=True)
 def loadData(api) :
     try:
-        response = requests.get("https://developer.joomla.org/statsb/" + api)
+        response = requests.get("https://developer.joomla.org/stats/" + api)
         response.raise_for_status()
         return response
     except requests.exceptions.HTTPError as errh:
