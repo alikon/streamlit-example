@@ -15,8 +15,18 @@ def apiendpoint(option) :
 
 @st.cache
 def loadData(api) :
-    response = requests.get("https://developer.joomla.org/statsb/" + api)
-    return response
+    try:
+        response = requests.get("https://developer.joomla.org/statsb/" + api)
+        response.raise_for_status()
+        return response
+    except requests.exceptions.HTTPError as errh:
+        print(errh)
+    except requests.exceptions.ConnectionError as errc:
+        print(errc)
+    except requests.exceptions.Timeout as errt:
+        print(errt)
+    except requests.exceptions.RequestException as err:
+        print(err)
 
 st.title("Joomla Streamlit App")
 
