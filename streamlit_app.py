@@ -13,7 +13,7 @@ def apiendpoint(option) :
     elif option == 'Database':
         return 'db_version'
 
-@st.cache
+@st.cache(suppress_st_warning=True)
 def loadData(api) :
     try:
         response = requests.get("https://developer.joomla.org/statsb/" + api)
