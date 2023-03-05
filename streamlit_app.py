@@ -1,6 +1,6 @@
 import requests
 import streamlit as st
-
+import altair as alt
 import numpy as np
 import pandas as pd
 
@@ -39,3 +39,14 @@ chart_data = pd.DataFrame(
 # chart_data.columns=np.array(columnVersion)
 
 st.line_chart(chart_data)
+
+
+source = pd.DataFrame({
+    'a': ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'],
+    'b': [28, 55, 43, 91, 81, 53, 19, 87, 52]
+})
+
+alt.Chart(source).mark_bar().encode(
+    x='a',
+    y='b'
+)
