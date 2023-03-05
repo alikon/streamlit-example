@@ -12,11 +12,11 @@ with st.sidebar:
     ## with st.echo():
     ##    st.write("Settings.")
     st.write("Settings.")
-    with st.spinner("Loading..."):
-        time.sleep(5)
-    st.success("Done!")
+    #with st.spinner("Loading..."):
+    #    time.sleep(5)
+    #st.success("Done!")
     perc = st.slider('How old are you?', 0, 100, 5)
-    st.write("selected ", perc, 'years old')
+    st.write("selected ", perc, '%')
 
 response = requests.get("https://developer.joomla.org/stats/cms_version")
 st.write(response)
@@ -26,10 +26,10 @@ st.write(json)
 # st.json(json['data']['cms_version'])
 
 versions = json['data']['cms_version']
-"""
-for version in versions:
-    st.write(version)
-"""
+
+##for version in versions:
+##    st.write(version)
+
 columnVersion = []
 valueVersion = []
 for key, val in versions.items():
