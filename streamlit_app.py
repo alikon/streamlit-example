@@ -14,9 +14,9 @@ def apiendpoint(option) :
         return 'db_version'
 
 @st.cache(suppress_st_warning=True)
-def loadData(api) :
+def loadData(api, days = 1) :
     try:
-        response = requests.get("https://developer.joomla.org/stats/" + api)
+        response = requests.get("https://developer.joomla.org/stats/" + api + "?timeframe=")
         response.raise_for_status()
         return response
     except requests.exceptions.HTTPError as errh:
@@ -41,7 +41,7 @@ with st.sidebar:
     ('CMS', 'PHP', 'Database'))
 
     # st.write('You selected:', option)
-    # perc = st.slider('Filter on %', 0, 100, 5)
+    days = st.slider('Filter on days', 1, 1000, 5)
     # st.write("selected ", perc, '%')
     #with st.spinner("Loading..."):
     #    time.sleep(5)
@@ -56,7 +56,7 @@ with st.sidebar:
     )
 
 api = apiendpoint(option)
-data = loadData(api)
+data = loadData(api, days)
 if (data.status_code != 200):
     st.warning('Unable to load data.')
     st.stop()
