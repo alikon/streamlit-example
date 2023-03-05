@@ -49,8 +49,6 @@ with st.sidebar:
         ["visible", "hidden", "collapsed"],
         key="visibility",
         label_visibility=st.session_state.visibility,
-        disabled=st.session_state.disabled,
-        horizontal=st.session_state.horizontal,
     )
 
 api = apiendpoint(option)
