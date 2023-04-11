@@ -50,10 +50,10 @@ with st.sidebar:
     if "visibility" not in st.session_state:
         st.session_state.visibility = "hidden"
     #st.write("Set label visibility 👇")
-    showRaw = st.radio(
-        "Set raw data visibility 👇",
-        ["visible", "hidden"],
-    )
+    #showRaw = st.radio(
+    #   "Set raw data visibility 👇",
+    #    ["visible", "hidden"],
+    #)
 st.write('days', days)
 api = apiendpoint(option)
 data = loadData(api, days)
@@ -87,8 +87,9 @@ v = alt.Chart(joomla).mark_bar().encode(
 st.altair_chart(v, use_container_width=True)
 
 # if st.session_state.visibility == "visible" :
-if showRaw == "visible" :
-    st.write(data)
+#if showRaw == "visible" :
+with st.expander("See data"):
+      #st.write(data)
     st.write(json)
     # st.json(json['data']['cms_version'])
     # versions = json['data']['cms_version']
